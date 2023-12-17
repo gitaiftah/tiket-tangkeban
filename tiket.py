@@ -1,3 +1,14 @@
+# fungsi=angka parameter=pesan
+def angka(pesan):
+    # memulai loop tak terbatas(infinity loop)
+    while True:
+        try:
+            ipt = int(input(pesan))
+            # mengembalikan nilai ipt dan keluar dari fungsi
+            return ipt
+        except ValueError:
+            print("\nMaaf input hanya menerima angka")
+
 ulangin="y"
 while ulangin=="y":
     print("""
@@ -46,11 +57,11 @@ d. Informasi Detail Ketentuan Tiket
 e. Kembali ke menu awal
 ------------------------------------
 *Beli Tiket Orang Masuk
-Rp 24.000 dengan minimal pembelian 4
+Rp 24.000 dengan maksimal pembelian 4
 
 *Beli Tiket Kendaraan Motor dan 
 Mobil Potongan Harga Rp 1000 Dengan
-Minimal Pembelian 2 
+Maksimal Pembelian 2 
 ------------------------------------                    
                     """)
                     pilihan = input("Silahkan Pilih Tiket Dengan Memasukkan Abjad Dari List Diatas :")
@@ -59,13 +70,15 @@ Minimal Pembelian 2
                     if pilihan == "a" or pilihan == "A":
                         stop = "y"
                         while stop == "y":
+                            # Mengimpor modul 'datetime' untuk mendapatkan informasi waktu saat ini
                             from datetime import datetime
-
+                            # Mengambil waktu saat ini
                             current = datetime.now()
+                            # Mendapatkan informasi tahun,bulan dan hari dari waktu saat ini
                             tahun = current.year
                             bulan = current.month
                             hari = current.day
-                            jumlahorang = int(input("Jumlah Orang :"))
+                            jumlahorang = angka("Jumlah Orang :")
                             if jumlahorang > 4:
                                 print("Jumlah Maksimal Untuk Satu Tiket 4 Orang")
                                 break
@@ -81,7 +94,7 @@ Minimal Pembelian 2
                                 print("\nData ke-", i + 1)
                                 nama_pengunjung = input("Masukkan Nama :")
                                 nama.append(nama_pengunjung)
-                                umur_pengunjung = int(input("Masukkan Umur :"))
+                                umur_pengunjung = angka("Masukkan Umur :")
                                 umur.append(umur_pengunjung)
                             for i in range(jumlahorang):
                                 if umur[i] <= 9:
@@ -110,6 +123,7 @@ Minimal Pembelian 2
                                 print("Terimakasih")
                                 print("----------------------------------------------")
                             ulangtiketbukit = input("Masukkan y untuk kembali :")
+                            # Mengakhiri loop while dan melanjutkan program ke bagian selanjutnya
                             break
 # END TIKET ORANG MASUK
 
@@ -127,7 +141,7 @@ Minimal Pembelian 2
 
                             x = datetime.datetime.now()
                             waktu = (x.strftime("%H:%M:%p"))
-                            jumlahmotor = int(input("Masukkan Jumlah Kendaraan Motor :"))
+                            jumlahmotor = angka("Masukkan Jumlah Kendaraan Motor :")
                             if jumlahmotor >= 3:
                                 print("Jumlah Maksimal Untuk Satu Tiket 2 Kendaraan Motor")
                                 break
@@ -180,7 +194,7 @@ Minimal Pembelian 2
 
                             x = datetime.datetime.now()
                             waktu = (x.strftime("%H:%M:%p"))
-                            jumlahmobil = int(input("Masukkan Jumlah Kendaraan Mobil :"))
+                            jumlahmobil = angka("Masukkan Jumlah Kendaraan Mobil :")
                             if jumlahmobil >= 3:
                                 print("Jumlah Maksimal Untuk Satu Tiket 2 Kendaraan Mobil")
                                 break
@@ -289,11 +303,12 @@ c.  Tiket Masuk Kendaraan Mobil
 TIKET MASUK TAMAN LANGIT
 ------------------------------------
 Weekday                 Rp 30.000
-*Pembelian Tiket Standard Untuk Satu 
-Atau Dua Orang 
+*Pembelian Tiket Standard Per-Orang 
 ------------------------------------
 Triple Fun Weekday      Rp 100.000
-*Di Minimal Pembelian 3 tiket
+*Untuk pembelian 3 tiket
+------------------------------------
+*Maksimal pesan 3 orang
 ------------------------------------
                         """)
                         lanjut=input("Masukkan L untuk lanjut K untuk kembali ke menu awal :")
@@ -305,7 +320,7 @@ Triple Fun Weekday      Rp 100.000
                                 tahun = current.year
                                 bulan = current.month
                                 hari = current.day
-                                jumlahorang = int(input("Jumlah orang :"))
+                                jumlahorang = angka("Jumlah orang :")
                                 if jumlahorang > 3:
                                     print("Jumlah maksimal pesan 3 orang")
                                     break
@@ -321,7 +336,7 @@ Triple Fun Weekday      Rp 100.000
                                     print("\nData ke-", i + 1)
                                     nama_pengunjung = input("Masukkan Nama :")
                                     nama.append(nama_pengunjung)
-                                    umur_pengunjung = int(input("Masukkan Umur :"))
+                                    umur_pengunjung = angka("Masukkan Umur :")
                                     umur.append(umur_pengunjung)
                                 for i in range(jumlahorang):
                                     if umur[i] <= 9:
@@ -367,11 +382,12 @@ Triple Fun Weekday      Rp 100.000
 TIKET MASUK TAMAN LANGIT
 ------------------------------------
 Weekend Taman Langit   Rp 50.000
-*Pembelian tiket standard untuk satu 
-atau dua orang 
+*Pembelian tiket standard Per-Orang 
 ------------------------------------
 Triple Fun Weekend      Rp 135.000
-*Di minimal pembelian 3 tiket
+*Untuk pembelian 3 tiket
+------------------------------------
+*Maksimal pesan 3 orang
 ------------------------------------
                         """)
                         lanjut = input("masukkan l untuk lanjut k untuk kembali ke menu awal :")
@@ -384,13 +400,13 @@ Triple Fun Weekend      Rp 135.000
                                 tahun = current.year
                                 bulan = current.month
                                 hari = current.day
-                                jumlahorang = int(input("Jumlah orang :"))
+                                jumlahorang = angka("Jumlah orang :")
                                 if jumlahorang > 3:
                                     print("Jumlah maksimal pesan 3 orang")
                                     break
                                 hargatikettaman = 50000
                                 if jumlahorang == 3:
-                                    hargatikettaman = 135000
+                                    hargatikettaman = 45000
                                 totalharga = hargatikettaman * jumlahorang
                                 print("Total Yang Harus Dibayar : Rp", totalharga)
                                 jumlahbayar = int(input("Uang Yang Diterima :"))
@@ -400,7 +416,7 @@ Triple Fun Weekend      Rp 135.000
                                     print("\nData ke-", i + 1)
                                     nama_pengunjung = input("Masukkan Nama :")
                                     nama.append(nama_pengunjung)
-                                    umur_pengunjung = int(input("Masukkan Umur :"))
+                                    umur_pengunjung = angka("Masukkan Umur :")
                                     umur.append(umur_pengunjung)
                                 for i in range(jumlahorang):
                                     if umur[i] <= 9:
@@ -477,8 +493,8 @@ TIKET MASUK CAMPING GROUND
 Weekday
 -------------------------------------
 Weekday Camping Ground   Rp 20.000
-*Pembelian tiket standard untuk satu 
-atau dua orang 
+*Pembelian tiket standard Per-Orang
+*Maksimal pesan 3 orang
 -------------------------------------
                                     """)
                                 lanjut = input("masukkan l untuk lanjut k untuk kembali ke menu awal :")
@@ -490,7 +506,7 @@ atau dua orang
                                         tahun = current.year
                                         bulan = current.month
                                         hari = current.day
-                                        jumlahorang = int(input("Jumlah orang :"))
+                                        jumlahorang = angka("Jumlah orang :")
                                         if jumlahorang > 3:
                                             print("Jumlah maksimal pesan 3 orang")
                                             break
@@ -504,7 +520,7 @@ atau dua orang
                                             print("\nData ke-", i + 1)
                                             nama_pengunjung = input("Masukkan Nama :")
                                             nama.append(nama_pengunjung)
-                                            umur_pengunjung = int(input("Masukkan Umur :"))
+                                            umur_pengunjung = angka("Masukkan Umur :")
                                             umur.append(umur_pengunjung)
                                         for i in range(jumlahorang):
                                             if umur[i] <= 9:
@@ -551,8 +567,8 @@ TIKET MASUK CAMPING GROUND
 Weekend
 ---------------------------------------
 Weekend Camping Ground   Rp 50.000
-*Pembelian tiket standard untuk satu 
-atau dua orang 
+*Pembelian tiket standard Per-Orang
+*Maksimal pesan 3 Orang
 ---------------------------------------
                                 """)
                                 lanjut = input("masukkan l untuk lanjut k untuk kembali ke menu awal :")
@@ -565,7 +581,7 @@ atau dua orang
                                         tahun = current.year
                                         bulan = current.month
                                         hari = current.day
-                                        jumlahorang = int(input("Jumlah orang :"))
+                                        jumlahorang = angka("Jumlah orang :")
                                         if jumlahorang > 3:
                                             print("Jumlah maksimal pesan 3 orang")
                                             break
@@ -579,7 +595,7 @@ atau dua orang
                                             print("\nData ke-", i + 1)
                                             nama_pengunjung = input("Masukkan nama :")
                                             nama.append(nama_pengunjung)
-                                            umur_pengunjung = int(input("Masukkan umur :"))
+                                            umur_pengunjung = angka("Masukkan umur :")
                                             umur.append(umur_pengunjung)
                                         for i in range(jumlahorang):
                                             if umur[i] <= 9:
@@ -639,6 +655,8 @@ TIKET SEWA TENDA
 Weekday
 ----------------------------------------------------
 Weekday Sewa Tenda   Rp 75.000
+*Pembelian tiket standar Per-Orang
+*Maksimal pesan 3 orang
 ----------------------------------------------------
                                 """)
                                 lanjut = input("masukkan l untuk lanjut k untuk kembali ke menu awal :")
@@ -651,7 +669,7 @@ Weekday Sewa Tenda   Rp 75.000
                                         tahun = current.year
                                         bulan = current.month
                                         hari = current.day
-                                        jumlahorang = int(input("Jumlah orang :"))
+                                        jumlahorang = angka("Jumlah orang :")
                                         if jumlahorang > 3:
                                             print("Jumlah maksimal pesan 3 orang")
                                             break
@@ -665,7 +683,7 @@ Weekday Sewa Tenda   Rp 75.000
                                             print("\nData ke-", i + 1)
                                             nama_pengunjung = input("Masukkan nama :")
                                             nama.append(nama_pengunjung)
-                                            umur_pengunjung = int(input("Masukkan umur :"))
+                                            umur_pengunjung = angka("Masukkan umur :")
                                             umur.append(umur_pengunjung)
                                         for i in range(jumlahorang):
                                             if umur[i] <= 9:
@@ -712,6 +730,8 @@ TIKET SEWA TENDA
 Weekend
 ----------------------------------------------------
 Weekend Sewa Tenda   Rp 150.000
+*Pembelian tiket standar Per-Orang
+*Maksimal pesan 3 orang
 ----------------------------------------------------
                                 """)
                                 lanjut = input("masukkan l untuk lanjut k untuk kembali ke menu awal :")
@@ -724,7 +744,7 @@ Weekend Sewa Tenda   Rp 150.000
                                         tahun = current.year
                                         bulan = current.month
                                         hari = current.day
-                                        jumlahorang = int(input("Jumlah orang :"))
+                                        jumlahorang = angka("Jumlah orang :")
                                         if jumlahorang > 3:
                                             print("Jumlah maksimal pesan 3 orang")
                                             break
@@ -738,7 +758,7 @@ Weekend Sewa Tenda   Rp 150.000
                                             print("\nData ke-", i + 1)
                                             nama_pengunjung = input("Masukkan nama :")
                                             nama.append(nama_pengunjung)
-                                            umur_pengunjung = int(input("Masukkan umur :"))
+                                            umur_pengunjung = angka("Masukkan umur :")
                                             umur.append(umur_pengunjung)
                                         for i in range(jumlahorang):
                                             if umur[i] <= 9:
