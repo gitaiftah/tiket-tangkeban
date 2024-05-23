@@ -1,3 +1,4 @@
+####
 # fungsi=angka parameter=pesan
 def angka(pesan):
     # memulai loop tak terbatas(infinity loop)
